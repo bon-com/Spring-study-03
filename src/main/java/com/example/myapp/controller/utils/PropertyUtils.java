@@ -22,13 +22,6 @@ public class PropertyUtils {
 		return getMessage(key, new String[] {});
 	}
 	
-	
-	/**
-	 * メッセージ取得
-	 * 
-	 * @param key
-	 * @return
-	 */
 	/**
 	 * 
 	 * @param key

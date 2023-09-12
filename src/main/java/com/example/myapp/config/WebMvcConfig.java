@@ -30,7 +30,6 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 	 * Beanバリデーションメッセージ等を制御する。
 	 * MessageSourceはメッセージの格納先を抽象化する。
 	 * 
-	 * 
 	 * @return
 	 */
 	@Bean
