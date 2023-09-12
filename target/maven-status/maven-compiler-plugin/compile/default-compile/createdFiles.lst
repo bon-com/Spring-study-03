@@ -1,0 +1,8 @@
+com\example\myapp\form\TestForm.class
+com\example\myapp\config\WebMvcConfig.class
+com\example\myapp\controller\IndexController.class
+com\example\myapp\controller\utils\PropertyUtils.class
+com\example\myapp\validation\AlphaNumeric$List.class
+com\example\myapp\controller\TestController.class
+com\example\myapp\config\AppConfig.class
+com\example\myapp\validation\AlphaNumeric.class

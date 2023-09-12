@@ -1,0 +1,110 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="
+           http://maven.apache.org/POM/4.0.0
+           http://maven.apache.org/maven-v4_0_0.xsd
+         ">
+
+	<!--
+		プロジェクトの概要
+		pom04.xmlに基づいてWARファイルとしてビルドする。
+		WAR（Web Application Archive）ファイルはWebアプリケーションをデプロイする形式。
+		Servletコンテナ（Tomcatなど）にデプロイできる。
+		
+	-->
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.example</groupId>
+    <artifactId>myapp</artifactId>
+    <packaging>war</packaging>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>myapp Maven Webapp</name>
+    <url>http://maven.apache.org</url>
+
+	<!--
+		dependencyManagementはプロジェクトで使用される依存関係のバージョンを一元管理する。
+		Springのplatform-bomが設定されており、これによりSpring関連のバージョンが一元管理される。
+		プロジェクトでplatform-bomを使用することで、
+		Springの各プロジェクトや関連する依存関係のバージョンを一元的に管理することができ、
+		バージョンの不整合や衝突を防ぐことができる。
+		
+	-->
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>io.spring.platform</groupId>
+                <artifactId>platform-bom</artifactId>
+                <version>2.0.5.RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+	<!--
+		HttpServletでHttpリクエストを処理できたり、
+		HttpSessionでセッションを管理することができる。
+	-->
+    <dependencies>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <!--
+        	EL式（JSP Expression Language）を使用できるようになる。 
+        -->
+        <dependency>
+            <groupId>org.apache.taglibs</groupId>
+            <artifactId>taglibs-standard-jstlel</artifactId>
+        </dependency>
+
+		<!--
+			DispatcherServletなど、Spring MVCのクラスやコンポーネントを使用できるようになる。
+		-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+        </dependency>
+        <!--
+        アノテーションベースのBeanバリデーションを使用できる。
+        @NotNull、@Emailのアノテーションを使用したりして特定のバリデーション条件をオブジェクトフィールドに付与できる。
+        あとはカスタムアノテーションによる独自チェック機能も実装できる。
+        -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+        </dependency>
+        <!--
+        	アプリケーションのロギングをSLF4Jを通じて統一的に行い、
+        	実際のロギングの実装としてlogbackを使用することができる。
+        -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+        </dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<scope>provided</scope> <!-- providedスコープが指定されたライブラリは、コンパイル時にのみ必要とされる。 -->
+		</dependency>
+    </dependencies>
+
+    <build>
+        <finalName>myapp</finalName>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <configuration>
+                        <source>1.8</source>
+                        <target>1.8</target>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+</project>
