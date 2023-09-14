@@ -20,16 +20,30 @@
 
 			<!-- 登録コード -->
 			<div class="form-group">
-				<label for="name">登録コード（半角英数字）：</label>
-				<form:input path="registerCode"  cssClass="form-control" />
+				<label for="registerCode">登録コード（半角英数字）：</label>
+				<form:input path="registerCode" cssClass="form-control" />
 				<form:errors path="registerCode" cssClass="text-danger" />
 			</div>
 
+			<!-- 登録年 -->
+			<div class="form-group">
+				<label for="nregisterYearame">登録年：</label>
+				<form:input path="registerYear" cssClass="form-control" />
+				<form:errors path="registerYear" cssClass="text-danger" />
+			</div>
+
+			<!-- メールアドレス -->
+			<div class="form-group">
+				<label for="email">メールアドレス：</label>
+				<form:input path="email" cssClass="form-control" />
+				<form:errors path="email" cssClass="text-danger" />
+			</div>
+			
 			<!-- 数値入力 -->
 			<div class="form-group">
-				<label for="age">年齢：</label>
-				<form:input path="age" type="number" cssClass="form-control" />
-				<form:errors path="age" cssClass="text-danger" />
+				<label for="pocketMoney">お小遣い：</label>
+				<form:input path="pocketMoney" type="number" cssClass="form-control" />
+				<form:errors path="pocketMoney" cssClass="text-danger" />
 			</div>
 
 			<!-- チェックボックス -->
@@ -42,47 +56,58 @@
 			<label for="gender">性別：</label>
 			<div class="form-check">
 				<form:radiobutton path="gender" value="male"
-					cssClass="form-check-input" />
-				<label class="form-check-label">男性</label>
+					cssClass="form-check-input" id="male" />
+				<label class="form-check-label" for="male">男性</label>
 			</div>
-			<div class="form-check mb-4">
+			<div class="form-check">
 				<form:radiobutton path="gender" value="female"
-					cssClass="form-check-input" />
-				<label class="form-check-label">女性</label>
+					cssClass="form-check-input" id="female" />
+				<label class="form-check-label" for="female">女性</label>
+			</div>
+			<div>
+				<form:errors path="gender" cssClass="text-danger" />
 			</div>
 
 			<!-- 日付入力 -->
-			<div class="form-group mb-4">
+			<div class="form-group mt-4 mb-4">
 				<label for="birthdate">生年月日：</label>
 				<form:input path="birthdate" type="date" cssClass="form-control" />
 				<form:errors path="birthdate" cssClass="text-danger" />
 			</div>
 
 			<!-- セレクトボックス -->
-			<div class="form-group mb-4">
+			<div class="form-group">
 				<label for="prefecture">都道府県：</label>
 				<form:select path="prefecture" cssClass="form-control">
 					<form:option value="" label="---" />
 					<form:option value="tokyo" label="東京都" />
 					<form:option value="osaka" label="大阪府" />
 				</form:select>
+				<form:errors path="prefecture" cssClass="text-danger" />
 			</div>
 
 			<!-- 郵便番号 -->
-			<div class="form-group mb-4">
+			<div class="form-group mt-4 mb-4">
 				<label for="postalCode">郵便番号：</label>
 				<div class="input-group">
-					<form:input path="postalCode1" size="3" maxlength="3"
-						cssClass="form-control" />
+					<!-- 郵便番号上3桁のテキストボックスの幅を調整 -->
+					<div class="col-4">
+						<form:input path="postalCode1" size="3" maxlength="3"
+							cssClass="form-control" />
+					</div>
 					<div class="input-group-append">
 						<span class="input-group-text">-</span>
 					</div>
-					<form:input path="postalCode2" size="4" maxlength="4"
-						cssClass="form-control" />
+					<!-- 郵便番号下4桁のテキストボックスの幅を調整 -->
+					<div class="col-5">
+						<form:input path="postalCode2" size="4" maxlength="4"
+							cssClass="form-control" />
+					</div>
 				</div>
-				<form:errors path="postalCode1" cssClass="text-danger" />
-				<form:errors path="postalCode2" cssClass="text-danger" />
+				<div><form:errors path="postalCode1" cssClass="text-danger" /></div>
+				<div><form:errors path="postalCode2" cssClass="text-danger" /></div>
 			</div>
+
 
 			<div class="form-group">
 				<button type="submit" class="btn btn-primary">送信</button>

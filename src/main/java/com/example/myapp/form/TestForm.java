@@ -1,10 +1,14 @@
 package com.example.myapp.form;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -16,26 +20,36 @@ import lombok.Data;
 @Data
 public class TestForm implements Serializable {
 
-	@NotEmpty
-	@Size(max = 30)
+	private static final long serialVersionUID = 1L;
+	
+	@Size(min = 1, max = 20)
 	private String name;
-
+	
 	@NotEmpty
 	@AlphaNumeric
 	private String registerCode;
 	
 	@NotNull
-	@NumberRange(min = 10, max = 70)
-	private Integer age;
+	@NumberRange(min = 1, max = 10000)
+	private Integer pocketMoney;
+	
+	@NotEmpty
+	@Pattern(regexp = "^[0-9]+$")
+	private String registerYear;
 
+	@NotEmpty
+	@Email
+	private String email;
+	
 	private Boolean newsletter;
 
 	@NotEmpty
 	private String gender;
 
 	@NotNull
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private String birthdate;
+	@Past
+	@DateTimeFormat(pattern = "yyyy-MM-dd") // これのおかげで画面側の文字列をDateに変換してくれる
+	private Date birthdate;
 
 	@NotEmpty
 	private String prefecture;

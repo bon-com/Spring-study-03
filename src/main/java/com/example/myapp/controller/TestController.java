@@ -14,6 +14,11 @@ import com.example.myapp.form.TestForm;
 @RequestMapping("test")
 public class TestController {
 
+//	@ModelAttribute
+//	public TestForm setUpForm() {
+//		return new TestForm();
+//	}
+	
 	@RequestMapping(method = RequestMethod.GET)
 	public String showInput(Model model) {
 		TestForm form = new TestForm();

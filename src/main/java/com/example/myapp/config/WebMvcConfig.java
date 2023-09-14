@@ -20,6 +20,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @ComponentScan("com.example.myapp.controller")
 public class WebMvcConfig extends WebMvcConfigurerAdapter {
 
+	/**
+	 * ビューリゾルバー
+	 */
     @Override
     public void configureViewResolvers(ViewResolverRegistry registry) {
     	// WEB-INF/views配下のjspとマッピング
