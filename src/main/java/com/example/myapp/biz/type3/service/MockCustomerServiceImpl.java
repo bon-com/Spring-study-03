@@ -17,15 +17,16 @@ import com.example.myapp.biz.type3.domain.Customer;
 import com.example.myapp.form.type3.CustomerForm;
 
 @Service
-public class MockCustomerServiceImpl implements CustomerService{
-
+public class MockCustomerServiceImpl implements CustomerService {
+	/** 日付変換フォーマット */
 	private static final SimpleDateFormat FORMATTER = new SimpleDateFormat("yyyyMMdd");
 	
+	/** 仮顧客一覧DBマップ */
 	private Map<Integer, Customer> customer_data = new LinkedHashMap<Integer, Customer>();
 	
+	/** 顧客IDカウント */
 	private Integer count;
 
-	
 	/**
 	 * 顧客一覧リスト取得
 	 * 
@@ -46,7 +47,7 @@ public class MockCustomerServiceImpl implements CustomerService{
 		BeanUtils.copyProperties(customer, target);
 		customer_data.put(target.getId(), target);
 	}
-	
+
 	/**
 	 * @PostConstructはBeanが初期化されるときに実行される。
 	 */
@@ -57,7 +58,7 @@ public class MockCustomerServiceImpl implements CustomerService{
 		save(new CustomerForm("佐藤", "satou@satou.com", convertDate("18970405"), 2));
 		save(new CustomerForm("木村", "kimura@kimura.com", convertDate("19891010"), 3));
 	}
-	
+
 	/**
 	 * String型からDate型に型変換
 	 * 
@@ -68,12 +69,12 @@ public class MockCustomerServiceImpl implements CustomerService{
 		Date resDate = null;
 		try {
 			resDate = FORMATTER.parse(dateStr);
-			
+
 		} catch (ParseException e) {
 			throw new RuntimeException();
 		}
-		
+
 		return resDate;
 	}
-	
+
 }

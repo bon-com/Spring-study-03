@@ -17,6 +17,12 @@
 
 	<!-- @EnableWebMvcと同じ役割。 これのおかげでアノテーションベースでURLとメソッドのマッピングなどできる。 -->
 	<mvc:annotation-driven />
+	
+	<!-- 
+		プロパティファイルから文字列を読み込む。
+		下記はルートアプリケーションコンテキストのBean定義ファイルに記述すると
+		なぜだか上手く参照できなかった。
+	 -->
 	<bean id="propertyConfigurer"
 		class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer">
 		<property name="locations">

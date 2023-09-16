@@ -10,7 +10,7 @@
 	<div class="container mt-5">
 		<!-- コンテナクラスを追加 -->
 		<h2 class="text-center">入力画面</h2>
-		<form:form modelAttribute="type1Form" class="mt-4">
+		<form:form modelAttribute="type1Form" class="mt-4" action="${pageContext.request.contextPath}/type1/" method="post">
 			<!-- テキストボックス -->
 			<div class="form-group">
 				<label for="name">お名前：</label>
@@ -48,19 +48,19 @@
 
 			<!-- チェックボックス -->
 			<div class="form-check mb-4">
-				<form:checkbox path="newsletter" cssClass="form-check-input" />
-				<label class="form-check-label">ニュースレターを受け取る</label>
+				<form:checkbox path="newsletter" cssClass="form-check-input"  id="newsletter"/>
+				<label class="form-check-label" for="newsletter">ニュースレターを受け取る</label>
 			</div>
 
 			<!-- ラジオボタン -->
 			<label for="gender">性別：</label>
 			<div class="form-check">
-				<form:radiobutton path="gender" value="male"
+				<form:radiobutton path="gender" value="1"
 					cssClass="form-check-input" id="male" />
 				<label class="form-check-label" for="male">男性</label>
 			</div>
 			<div class="form-check">
-				<form:radiobutton path="gender" value="female"
+				<form:radiobutton path="gender" value="2"
 					cssClass="form-check-input" id="female" />
 				<label class="form-check-label" for="female">女性</label>
 			</div>
@@ -111,7 +111,7 @@
 
 			<div class="form-group text-center">
 				<!-- 戻るボタン -->
-				<a href="<c:url value='welcome' />" class="btn btn-danger mr-4">戻る</a>
+				<a href="${pageContext.request.contextPath}/" class="btn btn-danger mr-4">戻る</a>
 
 				<!-- 次へボタン -->
 				<button type="submit" class="btn btn-primary">次へ</button>
