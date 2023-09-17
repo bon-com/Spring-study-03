@@ -4,7 +4,7 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<%@ include file="/WEB-INF/commons/header_common.jsp"%>
+<%@ include file="/WEB-INF/commons/header.jsp"%>
 </head>
 <body>
 	<div class="container mt-5">

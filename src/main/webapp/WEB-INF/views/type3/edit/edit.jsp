@@ -3,12 +3,13 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-	<%@ include file="/WEB-INF/commons/header_common.jsp"%>
-	<title>顧客情報編集画面</title>
+	<%@ include file="/WEB-INF/commons/header.jsp"%>
+	<title>顧客情報編集</title>
 </head>
 <body>
+	<%@ include file="/WEB-INF/commons/header_common.jsp"%>
 	<div class="container mt-5">
-		<h2 class="text-center">顧客情報編集画面</h2>
+		<h2 class="text-center">顧客情報編集</h2>
 		<form:form modelAttribute="editForm" class="mt-4">
 			<div class="container mt-5">
 				<table class="table table-bordered">
@@ -52,11 +53,11 @@
 			</div>
 			<div class="form-group text-center">
 				<!-- 戻るボタン -->
-				<a href="${pageContext.request.contextPath}/type3/home" class="btn btn-danger">戻る</a>
-				<button type="submit" name="confirm" class="btn btn-primary">次へ</button>
+				<a href="${contextPath}type3/home" class="btn btn-danger mr-4 px-5">戻る</a>
+				<button type="submit" name="confirm" class="btn btn-primary px-5">次へ</button>
 			</div>
 		</form:form>
 	</div>
-	</div>
+	
 </body>
 </html>

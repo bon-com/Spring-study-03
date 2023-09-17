@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.myapp.biz.type3.domain.Customer;
@@ -22,6 +23,10 @@ public class Type3Controller {
 	/** 顧客制御サービスクラス */
 	@Autowired
 	private CustomerService customerService;
+
+	/** 顧客情報表示補助クラス */
+	@Autowired
+	private Type3Helper type3Helper;
 	
 	/**
 	 * 顧客情報一覧画面の表示
@@ -29,12 +34,33 @@ public class Type3Controller {
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping(value="home", method = GET)
+	@RequestMapping(value = "home", method = GET)
 	public String showAllCustomer(Model model) {
 		// 顧客情報一覧を取得
 		List<Customer> customers = customerService.findAll();
-		model.addAttribute("customers", customers);
 		
+		// 出力値の設定
+		model.addAttribute("customers", customers);
+
 		return "type3/home";
+	}
+
+	/**
+	 * 顧客情報詳細画面の表示
+	 * 
+	 * @param mode
+	 * @return
+	 */
+	@RequestMapping(value = "/customer/{customerId}")
+	public String showDetail(@PathVariable int customerId, Model model) {
+		// 顧客情報の取得
+		Customer customer = customerService.findById(customerId);
+		String prefName = type3Helper.getPrefName(customer.getPrefecture());
+		
+		// 出力値の設定
+		model.addAttribute("customer", customer);
+		model.addAttribute("prefName", prefName);
+
+		return "type3/detail";
 	}
 }

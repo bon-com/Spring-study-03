@@ -2,9 +2,7 @@ package com.example.myapp.web.type3.controller;
 
 import static org.springframework.web.bind.annotation.RequestMethod.*;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
@@ -42,38 +40,24 @@ public class Type3EditController {
 
 	/** 顧客制御サービスクラス */
 	@Autowired
-	private CustomerService service;
+	private CustomerService customerService;
 
 	/** 顧客情報表示補助クラス */
 	@Autowired
-	private Type3Helper helper;
+	private Type3Helper type3Helper;
 
-	/**  */
+	/** データバインディング設定 */
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
 		// 文字列の入力フォームの前後余白をトリムする
 		// トリム後の空文字はnullに変換する
 		binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
 	}
-
-	/**
-	 * 都道府県情報をModelオブジェクトに設定
-	 * 
-	 * @return
-	 */
+	
+	/** 都道府県リストをModelに設定 */
 	@ModelAttribute("prefectures")
 	public List<Prefecture> prefectures() {
-		// プロパティから都道府県リスト取得
-		List<Prefecture> prefs = Arrays.stream(prefecturesStr.split(",")).map(str -> {
-			// Prefectureオブジェクトストリーム作成
-			String[] prefArr = str.split(":");
-			Prefecture pref = new Prefecture(prefArr[0], prefArr[1]);
-			return pref;
-		}).collect(Collectors.toList());
-		// 初期値設定
-		prefs.add(0, new Prefecture("", "選択してください"));
-
-		return prefs;
+		return type3Helper.getPrefectures();
 	}
 
 	/**
@@ -85,12 +69,13 @@ public class Type3EditController {
 	 */
 	@RequestMapping(value = "/edit", method = GET)
 	public String redirectShowEdit(@PathVariable int customerId, Model model) {
-		// 顧客データを取得してフォームにセット
-		Customer cusomer = service.findById(customerId);
+		// 顧客詳細の取得
+		Customer cusomer = customerService.findById(customerId);
+		// フォームにセット
 		CustomerForm form = new CustomerForm();
 		BeanUtils.copyProperties(cusomer, form);
 
-		// 出力値設定
+		// 出力値の設定
 		model.addAttribute("editForm", form);
 
 		return "redirect:edit-customer";
@@ -103,7 +88,7 @@ public class Type3EditController {
 	 */
 	@RequestMapping(value = "/edit-customer", method = GET)
 	public String showEdit() {
-		return "type3/edit";
+		return "type3/edit/edit";
 	}
 
 	/**
@@ -116,7 +101,7 @@ public class Type3EditController {
 		// 入力値検証
 		if (rs.hasErrors()) {
 			// エラー有
-			return "type3/edit";
+			return "type3/edit/edit";
 		}
 
 		return "redirect:confirm-customer";
@@ -128,32 +113,44 @@ public class Type3EditController {
 	 * @return
 	 */
 	@RequestMapping(value = "/confirm-customer", method = GET)
-	public String showConfirm(@ModelAttribute("prefectures") List<Prefecture> prefs,
-			@ModelAttribute("editForm") CustomerForm form, Model model) {
+	public String showConfirm(@ModelAttribute("editForm") CustomerForm form, Model model) {
 		// 都道府県名を設定
-		String prefName = helper.getPrefName(prefs, form.getPrefecture());
+		String prefName = type3Helper.getPrefName(form.getPrefecture());
 		model.addAttribute("prefName", prefName);
 
-		return "type3/confirm";
+		return "type3/edit/confirm";
 	}
 
+	/**
+	 * 顧客情報更新
+	 * 
+	 * @param form
+	 * @return
+	 */
 	@RequestMapping(value = "/confirm-customer", method = POST, params = "complete")
 	public String updateCustomer(@ModelAttribute("editForm") CustomerForm form) {
 		// 顧客情報更新
-		service.update(form);
+		customerService.update(form);
 
 		return "redirect:update-complete";
 	}
 
+	/**
+	 * 更新完了画面の表示
+	 * 
+	 * @param session
+	 * @param form
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value = "/update-complete", method = GET)
-	public String showUpdateDone(SessionStatus session, @ModelAttribute("editForm") CustomerForm form,
-			@ModelAttribute("prefectures") List<Prefecture> prefs, Model model) {
+	public String showUpdateDone(SessionStatus session, @ModelAttribute("editForm") CustomerForm form, Model model) {
 		// 都道府県名を設定
-		String prefName = helper.getPrefName(prefs, form.getPrefecture());
+		String prefName = type3Helper.getPrefName(form.getPrefecture());
 		model.addAttribute("prefName", prefName);
 		// セッション削除
 		session.setComplete();
 
-		return "type3/complete";
+		return "type3/edit/complete";
 	}
 }

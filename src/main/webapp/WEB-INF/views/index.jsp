@@ -1,6 +1,6 @@
 <html lang="ja">
 <head>
-	<%@ include file="/WEB-INF/commons/header_common.jsp" %>
+	<%@ include file="/WEB-INF/commons/header.jsp" %>
 </head>
 <body>
 	<h2>Hello World!!!!</h2>
