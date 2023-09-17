@@ -14,4 +14,8 @@ public interface CustomerService {
 	List<Customer> findAll();
 	
 	void save(CustomerForm customer);
+	
+	Customer findById(int customerId);
+	
+	void update(CustomerForm customer);
 }

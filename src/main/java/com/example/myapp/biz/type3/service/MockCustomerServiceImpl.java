@@ -1,7 +1,6 @@
 package com.example.myapp.biz.type3.service;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedHashMap;
@@ -13,14 +12,12 @@ import javax.annotation.PostConstruct;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
+import com.example.myapp.biz.type3.common.Type3Constant;
 import com.example.myapp.biz.type3.domain.Customer;
 import com.example.myapp.form.type3.CustomerForm;
 
 @Service
 public class MockCustomerServiceImpl implements CustomerService {
-	/** 日付変換フォーマット */
-	private static final SimpleDateFormat FORMATTER = new SimpleDateFormat("yyyyMMdd");
-	
 	/** 仮顧客一覧DBマップ */
 	private Map<Integer, Customer> customer_data = new LinkedHashMap<Integer, Customer>();
 	
@@ -37,6 +34,15 @@ public class MockCustomerServiceImpl implements CustomerService {
 	}
 
 	/**
+	 * 顧客情報の取得
+	 * 
+	 */
+	@Override
+	public Customer findById(int customerId) {
+		return customer_data.get(customerId);
+	}
+	
+	/**
 	 * 顧客データ保存
 	 * 
 	 */
@@ -45,18 +51,31 @@ public class MockCustomerServiceImpl implements CustomerService {
 		customer.setId(count++);
 		Customer target = new Customer();
 		BeanUtils.copyProperties(customer, target);
+		
 		customer_data.put(target.getId(), target);
 	}
 
 	/**
-	 * @PostConstructはBeanが初期化されるときに実行される。
+	 * 顧客データ更新
+	 * 
+	 */
+	@Override
+	public void update(CustomerForm customer) {
+		Customer target = new Customer();
+		BeanUtils.copyProperties(customer, target);
+		
+		customer_data.put(target.getId(), target);
+	}
+	
+	/**
+	 * PostConstructアノテーションはBeanが初期化されるときに実行される。
 	 */
 	@PostConstruct
 	public void init() {
 		count = 1;
-		save(new CustomerForm("山田", "yamada@yamada.com", convertDate("19900102"), 1));
-		save(new CustomerForm("佐藤", "satou@satou.com", convertDate("18970405"), 2));
-		save(new CustomerForm("木村", "kimura@kimura.com", convertDate("19891010"), 3));
+		save(new CustomerForm("山田", "yamada@yamada.com", convertDate("1990-01-02"), 1, "02"));
+		save(new CustomerForm("佐藤", "satou@satou.com", convertDate("1897-04-05"), 2, "23"));
+		save(new CustomerForm("木村", "kimura@kimura.com", convertDate("1989-10-10"), 3, "41"));
 	}
 
 	/**
@@ -68,7 +87,7 @@ public class MockCustomerServiceImpl implements CustomerService {
 	public static Date convertDate(String dateStr) {
 		Date resDate = null;
 		try {
-			resDate = FORMATTER.parse(dateStr);
+			resDate = Type3Constant.DATE_FORMATTER.parse(dateStr);
 
 		} catch (ParseException e) {
 			throw new RuntimeException();

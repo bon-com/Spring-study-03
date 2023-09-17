@@ -4,12 +4,14 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<%@ include file="/WEB-INF/commons/header_common.jsp"%>
+	<%@ include file="/WEB-INF/commons/header_common.jsp"%>
+	<title>顧客情報一覧画面</title>
 </head>
 <body>
 	<div class="container mt-5">
-		<h3>顧客データ一覧</h3>
+		<h2 class="text-center">顧客情報一覧画面</h2>
 
+		<a href="" class="mb-4 btn btn-success">新規作成</a>
 		<table class="table table-striped table-hover">
 			<thead class="thead-dark">
 				<tr>
@@ -26,7 +28,7 @@
 						<td><c:out value="${customer.name}" /></td>
 						<td><c:out value="${customer.email}" /></td>
 						<td><a href="#" class="btn btn-primary mr-2">詳細</a> <a
-							href="#" class="btn btn-warning">編集</a></td>
+							href="${pageContext.request.contextPath}/type3/customer/${customer.id}/edit" class="btn btn-warning">編集</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>

@@ -21,4 +21,6 @@ public class Customer {
 	private Date birthDay;
 	/** 好きな数字 */
 	private Integer favoriteNum;
+	/** 出身県 */
+	private String prefecture;
 }
