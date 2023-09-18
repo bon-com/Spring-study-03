@@ -7,12 +7,9 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -38,14 +35,6 @@ public class Type3CreateController {
 	@Autowired
 	private Type3Helper type3Helper;
 
-	/** データバインディング設定 */
-	@InitBinder
-	public void initBinder(WebDataBinder binder) {
-		// 文字列の入力フォームの前後余白をトリムする
-		// トリム後の空文字はnullに変換する
-		binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
-	}
-
 	/** 都道府県リストをModelに設定 */
 	@ModelAttribute("prefectures")
 	public List<Prefecture> prefectures() {
@@ -63,12 +52,12 @@ public class Type3CreateController {
 		// 出力値の設定
 		model.addAttribute("createForm", new CustomerForm());
 		model.addAttribute("prefectures", type3Helper.getPrefectures());
-		
+
 		return "type3/create/create";
 	}
 
 	/**
-	 * 顧客情報編集画面の入力値確認
+	 * 顧客情報登録画面の入力値確認
 	 * 
 	 * @param form
 	 * @param rs
@@ -86,7 +75,7 @@ public class Type3CreateController {
 	}
 
 	/**
-	 * 顧客情報確認画面の表示
+	 * 顧客情報登録確認画面の表示
 	 * 
 	 * @param model
 	 * @param form
@@ -97,10 +86,21 @@ public class Type3CreateController {
 		// 都道府県名の設定
 		String prefName = type3Helper.getPrefName(form.getPrefecture());
 		model.addAttribute("prefName", prefName);
-		
+
 		return "type3/create/confirm";
 	}
 
+	/**
+	 * 顧客情報登録確認画面から戻る
+	 * 
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value = "/create", method = GET, params = "redo")
+	public String redo() {
+		return "type3/create/create";
+	}
+	
 	/**
 	 * 顧客情報の登録
 	 * 
@@ -130,7 +130,7 @@ public class Type3CreateController {
 		model.addAttribute("prefName", prefName);
 		// セッション削除
 		session.setComplete();
-		
+
 		return "type3/create/complete";
 	}
 }

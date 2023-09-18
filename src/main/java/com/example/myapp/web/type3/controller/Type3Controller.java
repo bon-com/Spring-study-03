@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.myapp.biz.type3.domain.Customer;
 import com.example.myapp.biz.type3.service.CustomerService;
+import com.example.myapp.biz.type3.service.DataNotFoundException;
 
 /**
  * 顧客情報参照クラス
@@ -50,9 +51,10 @@ public class Type3Controller {
 	 * 
 	 * @param mode
 	 * @return
+	 * @throws DataNotFoundException 
 	 */
 	@RequestMapping(value = "/customer/{customerId}")
-	public String showDetail(@PathVariable int customerId, Model model) {
+	public String showDetail(@PathVariable int customerId, Model model) throws DataNotFoundException {
 		// 顧客情報の取得
 		Customer customer = customerService.findById(customerId);
 		String prefName = type3Helper.getPrefName(customer.getPrefecture());

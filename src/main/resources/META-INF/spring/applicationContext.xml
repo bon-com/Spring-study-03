@@ -14,9 +14,10 @@
 		<property name="basenames"
 			value="message, application-message" />
 	</bean>
-
+	<!-- パッケージスキャン -->
 	<context:component-scan
 		base-package="com.example.myapp.utils" />
 	<context:component-scan
 		base-package="com.example.myapp.biz" />
+
 </beans>

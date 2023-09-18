@@ -5,9 +5,11 @@ com\example\myapp\web\type1\validation\Group1.class
 com\example\myapp\web\type3\controller\Type3Controller.class
 com\example\myapp\web\type1\validation\AlphaNumeric.class
 com\example\myapp\form\type2\Type2Form.class
+com\example\myapp\form\type4\FileUploadForm.class
 com\example\myapp\biz\type3\domain\Customer.class
 com\example\myapp\web\type1\controller\Type1Controller.class
 com\example\myapp\config\AppConfig.class
+com\example\myapp\web\type4\controller\Type4Controller.class
 com\example\myapp\biz\type3\service\CustomerService.class
 com\example\myapp\form\type1\Type1Form.class
 com\example\myapp\web\type1\validation\Group2.class
@@ -25,3 +27,5 @@ com\example\myapp\web\type1\validation\ValidationOrder.class
 com\example\myapp\config\WebMvcConfig.class
 com\example\myapp\biz\type3\common\Type3Constant.class
 com\example\myapp\web\type1\validation\AlphaNumeric$List.class
+com\example\myapp\biz\type3\service\DataNotFoundException.class
+com\example\myapp\web\type3\controller\Type3ControllerAdvice.class

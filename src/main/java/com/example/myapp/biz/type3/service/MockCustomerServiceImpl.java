@@ -35,10 +35,14 @@ public class MockCustomerServiceImpl implements CustomerService {
 
 	/**
 	 * 顧客情報の取得
+	 * @throws DataNotFoundException 
 	 * 
 	 */
 	@Override
-	public Customer findById(int customerId) {
+	public Customer findById(int customerId) throws DataNotFoundException {
+		if (!customer_data.containsKey(customerId)) {
+			throw new DataNotFoundException();
+		}
 		return customer_data.get(customerId);
 	}
 	
@@ -57,16 +61,33 @@ public class MockCustomerServiceImpl implements CustomerService {
 
 	/**
 	 * 顧客データ更新
+	 * @throws DataNotFoundException 
 	 * 
 	 */
 	@Override
-	public void update(CustomerForm customer) {
+	public void update(CustomerForm customer) throws DataNotFoundException {
+		if (!customer_data.containsKey(customer.getId())) {
+			throw new DataNotFoundException();
+		}
+		
 		Customer target = new Customer();
 		BeanUtils.copyProperties(customer, target);
 		
 		customer_data.put(target.getId(), target);
 	}
 	
+	/**
+	 * 顧客データ削除
+	 * 
+	 */
+	@Override
+	public void delete(int customerId) throws DataNotFoundException {
+		if (!customer_data.containsKey(customerId)) {
+			throw new DataNotFoundException();
+		}
+		
+		customer_data.remove(customerId);
+	}
 	/**
 	 * PostConstructアノテーションはBeanが初期化されるときに実行される。
 	 */
@@ -95,5 +116,6 @@ public class MockCustomerServiceImpl implements CustomerService {
 
 		return resDate;
 	}
+
 
 }

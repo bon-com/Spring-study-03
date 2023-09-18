@@ -15,7 +15,9 @@ public interface CustomerService {
 	
 	void save(CustomerForm customer);
 	
-	Customer findById(int customerId);
+	Customer findById(int customerId) throws DataNotFoundException;
 	
-	void update(CustomerForm customer);
+	void update(CustomerForm customer) throws DataNotFoundException;
+	
+	void delete(int customerId) throws DataNotFoundException;
 }

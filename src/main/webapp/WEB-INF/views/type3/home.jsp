@@ -28,9 +28,13 @@
 						<td><c:out value="${customer.id}" /></td>
 						<td><c:out value="${customer.name}" /></td>
 						<td><c:out value="${customer.email}" /></td>
-						<td><a href="${contextPath}type3/customer/${customer.id}" class="btn btn-primary mr-2">詳細</a> <a
-							href="${contextPath}type3/customer/${customer.id}/edit"
-							class="btn btn-warning">編集</a></td>
+						<td><a href="${contextPath}type3/customer/${customer.id}"
+							class="btn btn-primary mr-2">詳細</a> 
+							<a href="${contextPath}type3/customer/${customer.id}/edit"
+							class="btn btn-warning mr-2">編集</a>
+							<a href="${contextPath}type3/customer/${customer.id}/delete"
+							class="btn btn-danger">削除</a>
+						</td>
 					</tr>
 				</c:forEach>
 			</tbody>

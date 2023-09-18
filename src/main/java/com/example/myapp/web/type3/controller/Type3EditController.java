@@ -8,13 +8,9 @@ import javax.validation.Valid;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +19,7 @@ import org.springframework.web.bind.support.SessionStatus;
 
 import com.example.myapp.biz.type3.domain.Customer;
 import com.example.myapp.biz.type3.service.CustomerService;
+import com.example.myapp.biz.type3.service.DataNotFoundException;
 import com.example.myapp.form.type3.CustomerForm;
 import com.example.myapp.web.type1.dto.Prefecture;
 
@@ -34,10 +31,6 @@ import com.example.myapp.web.type1.dto.Prefecture;
 @RequestMapping("/type3/customer/{customerId}")
 @SessionAttributes("editForm")
 public class Type3EditController {
-	/** 都道府県情報 */
-	@Value("${prefectures}")
-	private String prefecturesStr;
-
 	/** 顧客制御サービスクラス */
 	@Autowired
 	private CustomerService customerService;
@@ -46,14 +39,6 @@ public class Type3EditController {
 	@Autowired
 	private Type3Helper type3Helper;
 
-	/** データバインディング設定 */
-	@InitBinder
-	public void initBinder(WebDataBinder binder) {
-		// 文字列の入力フォームの前後余白をトリムする
-		// トリム後の空文字はnullに変換する
-		binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
-	}
-	
 	/** 都道府県リストをModelに設定 */
 	@ModelAttribute("prefectures")
 	public List<Prefecture> prefectures() {
@@ -65,10 +50,11 @@ public class Type3EditController {
 	 * 
 	 * @param customerId
 	 * @param model
+	 * @throws DataNotFoundException 
 	 * @return
 	 */
 	@RequestMapping(value = "/edit", method = GET)
-	public String redirectShowEdit(@PathVariable int customerId, Model model) {
+	public String redirectShowEdit(@PathVariable int customerId, Model model) throws DataNotFoundException {
 		// 顧客詳細の取得
 		Customer cusomer = customerService.findById(customerId);
 		// フォームにセット
@@ -125,10 +111,11 @@ public class Type3EditController {
 	 * 顧客情報更新
 	 * 
 	 * @param form
+	 * @throws DataNotFoundException 
 	 * @return
 	 */
 	@RequestMapping(value = "/confirm-customer", method = POST, params = "complete")
-	public String updateCustomer(@ModelAttribute("editForm") CustomerForm form) {
+	public String updateCustomer(@ModelAttribute("editForm") CustomerForm form) throws DataNotFoundException {
 		// 顧客情報更新
 		customerService.update(form);
 
