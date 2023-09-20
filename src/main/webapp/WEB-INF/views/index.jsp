@@ -16,6 +16,7 @@
 		<li><a href="<c:url value="/type4/fileupload/form" />">画面遷移タイプ４（PDFファイルアップロード）</a></li>
 		<li><a href="<c:url value="/type5/input" />">画面遷移タイプ５（さまざまなフォームバインド）</a></li>
 		<li><a href="<c:url value="/type6/input" />">画面遷移タイプ６（さまざまなフォームバインド）</a></li>
+		<li><a href="<c:url value="/type7/menu" />">画面遷移タイプ７（さまざまなフォームバインド）</a></li>
 	</ul>
 </body>
 </html>
