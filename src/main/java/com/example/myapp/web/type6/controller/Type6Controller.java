@@ -1,4 +1,4 @@
-package com.example.myapp.web.type6;
+package com.example.myapp.web.type6.controller;
 
 import static org.springframework.web.bind.annotation.RequestMethod.*;
 
