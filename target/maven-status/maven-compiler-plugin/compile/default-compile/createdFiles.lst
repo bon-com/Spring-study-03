@@ -1,9 +1,15 @@
 com\example\myapp\web\type1\validation\NumberRange.class
+com\example\myapp\form\type6\PointForm.class
+com\example\myapp\web\type6\Type6Controller.class
 com\example\myapp\web\type1\controller\Type1Helper.class
 com\example\myapp\web\type3\controller\Type3CreateController.class
 com\example\myapp\web\type1\validation\Group1.class
+com\example\myapp\web\type5\controller\Typet5Constant.class
 com\example\myapp\web\type3\controller\Type3Controller.class
+com\example\myapp\web\common\CommonController.class
+com\example\myapp\form\type6\UserForm.class
 com\example\myapp\web\type1\validation\AlphaNumeric.class
+com\example\myapp\form\type5\Type5Form.class
 com\example\myapp\form\type2\Type2Form.class
 com\example\myapp\form\type4\FileUploadForm.class
 com\example\myapp\biz\type3\domain\Customer.class
@@ -11,6 +17,7 @@ com\example\myapp\web\type1\controller\Type1Controller.class
 com\example\myapp\config\AppConfig.class
 com\example\myapp\web\type4\controller\Type4Controller.class
 com\example\myapp\biz\type3\service\CustomerService.class
+com\example\myapp\form\type6\Type6Form.class
 com\example\myapp\form\type1\Type1Form.class
 com\example\myapp\web\type1\validation\Group2.class
 com\example\myapp\web\type1\validation\NumberRangeValidator.class
@@ -24,8 +31,10 @@ com\example\myapp\web\type3\controller\Type3EditController.class
 com\example\myapp\web\type1\dto\Prefecture.class
 com\example\myapp\web\type1\common\Type1Constant.class
 com\example\myapp\web\type1\validation\ValidationOrder.class
+com\example\myapp\web\type5\controller\Type5Controller.class
 com\example\myapp\config\WebMvcConfig.class
 com\example\myapp\biz\type3\common\Type3Constant.class
 com\example\myapp\web\type1\validation\AlphaNumeric$List.class
 com\example\myapp\biz\type3\service\DataNotFoundException.class
 com\example\myapp\web\type3\controller\Type3ControllerAdvice.class
+com\example\myapp\web\type3\controller\Type3DeleteController.class

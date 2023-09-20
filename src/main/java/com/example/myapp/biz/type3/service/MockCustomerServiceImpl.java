@@ -19,7 +19,7 @@ import com.example.myapp.form.type3.CustomerForm;
 @Service
 public class MockCustomerServiceImpl implements CustomerService {
 	/** 仮顧客一覧DBマップ */
-	private Map<Integer, Customer> customer_data = new LinkedHashMap<Integer, Customer>();
+	private Map<Integer, Customer> customer_data = new LinkedHashMap<>();
 	
 	/** 顧客IDカウント */
 	private Integer count;
