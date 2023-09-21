@@ -11,8 +11,11 @@
 		<h2 class="text-center">さまざまなフォームバインド</h2>
 		<div class="container mt-5">
 			<ul class="list-group">
-				<li class="list-group-item">生徒情報は<a href="${contextPath}type7/student-info">こちら</a></li>
-				<li class="list-group-item">テスト結果は<a href="${contextPath}type7/test-info">こちら</a></li>
+				<li class="list-group-item">500エラーを出すには<a href="${contextPath}type8/error-type1">こちら</a></li>
+				<li class="list-group-item">404エラーを出すには<a href="${contextPath}type8/error-type2">こちら</a></li>
+				<li class="list-group-item">IOException例外を出すには<a href="${contextPath}type8/error-type4">こちら</a></li>
+				<li class="list-group-item">DataNotFoundException例外を出すには<a href="${contextPath}type8/error-type5">こちら</a></li>
+				<li class="list-group-item">その他デフォルトエラーを出すには<a href="${contextPath}type8/error-type3">こちら</a></li>
 			</ul>
 		</div>
 		<div class="form-group text-center">

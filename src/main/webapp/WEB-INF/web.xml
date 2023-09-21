@@ -117,5 +117,25 @@
 			<include-prelude>/WEB-INF/commons/include.jsp</include-prelude>
 		</jsp-property-group>
 	</jsp-config>
-
+	
+	<!-- サーブレットコンテナ内のエラーハンドリング -->
+	<!-- 500エラー -->
+	<error-page>
+		<error-code>500</error-code>
+		<location>/WEB-INF/views/errors/system_error.jsp</location>
+	</error-page>
+	<!-- 404エラー -->
+	<error-page>
+		<error-code>404</error-code>
+		<location>/WEB-INF/views/errors/not_found.jsp</location>
+	</error-page>
+	<!-- 例外クラス指定 -->
+	<error-page>
+		<exception-type>java.io.IOException</exception-type>
+		<location>/WEB-INF/views/errors/io_error.jsp</location>
+	</error-page>
+	<!-- デフォルトエラー -->
+	<error-page>
+		<location>/WEB-INF/views/errors/default.jsp</location>
+	</error-page>
 </web-app>

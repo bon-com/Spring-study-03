@@ -17,6 +17,7 @@
 		<li><a href="<c:url value="/type5/input" />">画面遷移タイプ５（さまざまなフォームバインド）</a></li>
 		<li><a href="<c:url value="/type6/input" />">画面遷移タイプ６（さまざまなフォームバインド）</a></li>
 		<li><a href="<c:url value="/type7/menu" />">画面遷移タイプ７（さまざまなフォームバインド）</a></li>
+		<li><a href="<c:url value="/type8/menu" />">画面遷移タイプ８（サーブレットコンテナエラーハンドリング）</a></li>
 	</ul>
 </body>
 </html>
