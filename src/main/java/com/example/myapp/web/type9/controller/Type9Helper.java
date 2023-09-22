@@ -14,11 +14,9 @@ public class Type9Helper {
 	@Autowired
 	private CommonHelper commonHelper;
 	
-	public UserDTO getCopyDto(User user, UserDTO userDto) {
+	public void copyToUserDto(User user, UserDTO userDto) {
 		BeanUtils.copyProperties(user, userDto);
 		String prefName = commonHelper.getPrefName(userDto.getPrefecture());
 		userDto.setPrefName(prefName);
-		
-		return userDto;
 	}
 }

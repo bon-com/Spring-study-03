@@ -30,7 +30,6 @@ public class Type9Controller {
 		return "type9/menu";
 	}
 	
-	
 	@RequestMapping(value = "user/all", method = GET)
 	public String showAll(Model model) {
 		List<UserDTO> users = userDao.findAll()
@@ -50,7 +49,7 @@ public class Type9Controller {
 	public String showUserById(@PathVariable int userId, Model model) {
 		User userData = userDao.findById(userId);
 		UserDTO user = new UserDTO();
-		type9Helper.getCopyDto(userData, user);
+		type9Helper.copyToUserDto(userData, user);
 		model.addAttribute("user", user);
 		
 		return "type9/menu";
