@@ -1,4 +1,4 @@
-package com.example.myapp.biz.type3.service;
+package com.example.myapp.errors;
 
 public class DataNotFoundException extends Exception {
 

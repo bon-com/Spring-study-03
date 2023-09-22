@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.myapp.biz.type3.domain.Customer;
 import com.example.myapp.biz.type3.service.CustomerService;
-import com.example.myapp.biz.type3.service.DataNotFoundException;
+import com.example.myapp.errors.DataNotFoundException;
 
 /**
  * 顧客情報参照クラス

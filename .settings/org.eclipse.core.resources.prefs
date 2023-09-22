@@ -1,4 +1,5 @@
 eclipse.preferences.version=1
-encoding//src/main/resources/application-message.properties=ISO-8859-1
-encoding//src/main/resources/message.properties=ISO-8859-1
-encoding//src/main/resources/prefectures.properties=ISO-8859-1
+encoding//src/main/resources/META-INF/application-message.properties=ISO-8859-1
+encoding//src/main/resources/META-INF/jdbc.properties=ISO-8859-1
+encoding//src/main/resources/META-INF/message.properties=ISO-8859-1
+encoding//src/main/resources/META-INF/prefectures.properties=ISO-8859-1

@@ -2,6 +2,7 @@ package com.example.myapp.web.type8.controller;
 
 import static org.springframework.web.bind.annotation.RequestMethod.*;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -9,7 +10,7 @@ import javax.servlet.ServletException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.example.myapp.biz.type3.service.DataNotFoundException;
+import com.example.myapp.errors.DataNotFoundException;
 import com.example.myapp.form.type8.Type8Form;
 
 @Controller
@@ -68,5 +69,10 @@ public class Type8Controller {
 	@RequestMapping(value = "error-type5", method = GET)
 	public String showError5() throws DataNotFoundException{
 		throw new DataNotFoundException();
+	}
+	
+	@RequestMapping(value = "error-type6", method = GET)
+	public String showError6() throws FileNotFoundException {
+		throw new FileNotFoundException();
 	}
 }

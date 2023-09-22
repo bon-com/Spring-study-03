@@ -15,6 +15,7 @@
 				<li class="list-group-item">404エラーを出すには<a href="${contextPath}type8/error-type2">こちら</a></li>
 				<li class="list-group-item">IOException例外を出すには<a href="${contextPath}type8/error-type4">こちら</a></li>
 				<li class="list-group-item">DataNotFoundException例外を出すには<a href="${contextPath}type8/error-type5">こちら</a></li>
+				<li class="list-group-item">FileNotFoundException例外を出すには<a href="${contextPath}type8/error-type6">こちら</a></li>
 				<li class="list-group-item">その他デフォルトエラーを出すには<a href="${contextPath}type8/error-type3">こちら</a></li>
 			</ul>
 		</div>

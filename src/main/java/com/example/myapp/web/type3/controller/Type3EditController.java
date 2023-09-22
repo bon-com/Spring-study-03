@@ -19,7 +19,7 @@ import org.springframework.web.bind.support.SessionStatus;
 
 import com.example.myapp.biz.type3.domain.Customer;
 import com.example.myapp.biz.type3.service.CustomerService;
-import com.example.myapp.biz.type3.service.DataNotFoundException;
+import com.example.myapp.errors.DataNotFoundException;
 import com.example.myapp.form.type3.CustomerForm;
 import com.example.myapp.web.type1.dto.Prefecture;
 

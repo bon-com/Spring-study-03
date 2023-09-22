@@ -14,20 +14,17 @@
 	<!-- コントローラーコンポーネントをスキャン -->
 	<context:component-scan
 		base-package="com.example.myapp.web" />
-
 	<!-- @EnableWebMvcと同じ役割。 これのおかげでアノテーションベースでURLとメソッドのマッピングなどできる。 -->
 	<mvc:annotation-driven />
-
 	<!-- プロパティファイルから文字列を読み込む。 下記はルートアプリケーションコンテキストのBean定義ファイルに記述すると なぜだか上手く参照できなかった。 -->
 	<bean id="propertyConfigurer"
 		class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer">
 		<property name="locations">
 			<list>
-				<value>classpath:prefectures.properties</value>
+				<value>classpath:/META-INF/prefectures.properties</value>
 			</list>
 		</property>
 	</bean>
-
 	<!-- 例外発生時の共通処理 -->
 	<bean id="exceptionResolver"
 		class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
@@ -39,14 +36,14 @@
 			</props>
 		</property>
 	</bean>
-	
+
 	<!-- ファイルアップロード -->
 	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<!-- ファイルの最大サイズを設定する場合 (ここでは10MB) -->
 		<property name="maxUploadSize" value="10485760" />
 	</bean>
-	
+
 	<!-- ビューリゾルバー -->
 	<mvc:view-resolvers>
 		<mvc:jsp prefix="/WEB-INF/views/" suffix=".jsp" />

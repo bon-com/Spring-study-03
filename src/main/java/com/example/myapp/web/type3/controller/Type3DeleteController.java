@@ -7,11 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.myapp.biz.type3.domain.Customer;
 import com.example.myapp.biz.type3.service.CustomerService;
-import com.example.myapp.biz.type3.service.DataNotFoundException;
+import com.example.myapp.errors.DataNotFoundException;
 
 /**
  * 顧客情報削除クラス
@@ -58,7 +57,7 @@ public class Type3DeleteController {
 	 * @throws DataNotFoundException
 	 */
 	@RequestMapping(value = "/delete-done", method = GET)
-	public String delete(@PathVariable int customerId, RedirectAttributes redirectAttr) throws DataNotFoundException {
+	public String delete(@PathVariable int customerId) throws DataNotFoundException {
 		customerService.delete(customerId);
 		
 		return "redirect:delete-complete";
