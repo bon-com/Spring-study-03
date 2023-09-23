@@ -8,4 +8,8 @@ public interface UserDao {
 	List<User> findAll();
 	
 	User findById(int id);
+	
+	int save(User user);
+	
+	User findByMail(String mail);
 }

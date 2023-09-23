@@ -3,25 +3,21 @@ package com.example.myapp.web.type9.controller;
 import static org.springframework.web.bind.annotation.RequestMethod.*;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.example.myapp.biz.type9.domain.User;
-import com.example.myapp.biz.type9.repository.JdbcUserDao;
+import com.example.myapp.biz.type9.service.UserService;
 import com.example.myapp.dto.type9.UserDTO;
 
 @Controller
 @RequestMapping("type9")
 public class Type9Controller {
 	@Autowired
-	private JdbcUserDao userDao;
-	
+	private UserService userService;
 	@Autowired
 	private Type9Helper type9Helper;
 	
@@ -32,14 +28,8 @@ public class Type9Controller {
 	
 	@RequestMapping(value = "user/all", method = GET)
 	public String showAll(Model model) {
-		List<UserDTO> users = userDao.findAll()
-		.stream().map(u -> {
-			UserDTO dto = new UserDTO();
-			BeanUtils.copyProperties(u, dto);
-			return dto;
-		})
-		.collect(Collectors.toList());
-		
+		// 利用者一覧取得
+		List<UserDTO> users = userService.findAll();
 		model.addAttribute("users", users);
 		
 		return "type9/menu";
@@ -47,10 +37,10 @@ public class Type9Controller {
 	
 	@RequestMapping(value = "user/{userId}")
 	public String showUserById(@PathVariable int userId, Model model) {
-		User userData = userDao.findById(userId);
-		UserDTO user = new UserDTO();
-		type9Helper.copyToUserDto(userData, user);
-		model.addAttribute("user", user);
+		// 利用者をID検索
+		UserDTO userDto = userService.findById(userId);
+		type9Helper.setPrefNameToUserDTO(userDto);
+		model.addAttribute("user", userDto);
 		
 		return "type9/menu";
 	}

@@ -9,7 +9,7 @@
 	<%@ include file="/WEB-INF/commons/header_common.jsp"%>
 	<div class="container mt-5">
 		<h2 class="text-center mb-4">新規登録</h2>
-		<form:form modelAttribute="createForm" class="mt-4">
+		<form:form modelAttribute="createUserForm" class="mt-4">
 			<table class="table table-bordered">
 				<tr>
 					<th class="col-3">名前</th>
@@ -28,8 +28,8 @@
 				<tr>
 					<th class="col-3">生年月日</th>
 					<td class="col-7">
-						<form:input type="date" path="birthDay" cssClass="form-control" />
-						<form:errors path="birthDay" cssClass="text-danger" />
+						<form:input type="date" path="birthday" cssClass="form-control" />
+						<form:errors path="birthday" cssClass="text-danger" />
 					</td>
 				</tr>
 				<tr>
@@ -41,8 +41,8 @@
 				</tr>
 			</table>
 			<div class="form-group text-center mt-4">
-				<a href="${contextPath}" class="btn btn-danger mr-4 px-5">戻る</a>
-				<button type="submit" name="send" class="btn btn-primary px-5">次へ</button>
+				<a href="${contextPath}type9/user/back-action" class="btn btn-danger mr-4 px-5">戻る</a>
+				<button type="submit" name="register-request" class="btn btn-primary px-5">次へ</button>
 			</div>
 		</form:form>
 	</div>

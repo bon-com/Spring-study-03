@@ -56,7 +56,9 @@ C:\workspace\myapp\src\main\java\com\example\myapp\web\type3\controller\Type3Hel
 C:\workspace\myapp\src\main\java\com\example\myapp\web\welcome\controller\WelcomdeController.java
 C:\workspace\myapp\src\main\java\com\example\myapp\config\WebMvcConfig.java
 C:\workspace\myapp\src\main\java\com\example\myapp\form\type6\PointForm.java
+C:\workspace\myapp\src\main\java\com\example\myapp\biz\type9\service\UserService.java
 C:\workspace\myapp\src\main\java\com\example\myapp\form\type6\Type6Form.java
 C:\workspace\myapp\src\main\java\com\example\myapp\errors\KaizanException.java
 C:\workspace\myapp\src\main\java\com\example\myapp\web\type6\controller\Type6Controller.java
+C:\workspace\myapp\src\main\java\com\example\myapp\biz\type9\service\UserServiceImpl.java
 C:\workspace\myapp\src\main\java\com\example\myapp\form\type7\PointForm.java

@@ -5,8 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Repository;
 
 import com.example.myapp.biz.type9.domain.User;
@@ -47,6 +49,28 @@ public class JdbcUserDao implements UserDao{
 		// パラメータ設定
 		MapSqlParameterSource param = new MapSqlParameterSource();
 		param.addValue("id", id);
+		// 実行
+		User user= namedParameterJdbcTemplate.queryForObject(sql, param, userRowMapper);
+
+		return user;
+	}
+
+	@Override
+	public int save(User user) {
+		String sql = "INSERT INTO user(name, email, birth_date, prefecture) VALUES (:name, :email, :birthday, :prefecture)";
+		// パラメータ設定
+		SqlParameterSource param = new BeanPropertySqlParameterSource(user);
+		// 実行
+		return namedParameterJdbcTemplate.update(sql, param);
+	}
+
+	@Override
+	public User findByMail(String mail) {
+		// SQL文
+		String sql = "SELECT id, name, email, birth_date, prefecture, created_at, updated_at FROM user WHERE email = :mail";
+		// パラメータ設定
+		MapSqlParameterSource param = new MapSqlParameterSource();
+		param.addValue("mail", mail);
 		// 実行
 		User user= namedParameterJdbcTemplate.queryForObject(sql, param, userRowMapper);
 

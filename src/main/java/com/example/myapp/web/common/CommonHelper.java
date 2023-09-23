@@ -37,6 +37,7 @@ public class CommonHelper {
 			Prefecture pref = new Prefecture(entry.getKey(), entry.getValue());
 			prefList.add(pref);
 		}
+		prefList.add(0, new Prefecture("", "選択してください"));
 	}
 
 	public List<Prefecture> getPrefList() {
