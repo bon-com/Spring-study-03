@@ -12,4 +12,8 @@ public interface UserDao {
 	int save(User user);
 	
 	User findByMail(String mail);
+	
+	int update(User user);
+	
+	int delete(int id);
 }

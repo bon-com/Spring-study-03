@@ -72,9 +72,25 @@ public class JdbcUserDao implements UserDao{
 		MapSqlParameterSource param = new MapSqlParameterSource();
 		param.addValue("mail", mail);
 		// 実行
-		User user= namedParameterJdbcTemplate.queryForObject(sql, param, userRowMapper);
+		User user = namedParameterJdbcTemplate.queryForObject(sql, param, userRowMapper);
 
 		return user;
+	}
+
+	@Override
+	public int update(User user) {
+		String sql = "UPDATE user SET name=:name, email=:email, birth_date=:birthday, prefecture=:prefecture WHERE id=:id";
+		SqlParameterSource param = new BeanPropertySqlParameterSource(user);
+		return namedParameterJdbcTemplate.update(sql, param);
+	}
+
+	@Override
+	public int delete(int id) {
+		String sql = "DELETE FROM user WHERE id=:id";
+		MapSqlParameterSource param = new MapSqlParameterSource();
+		param.addValue("id", id);
+		// 実行
+		return namedParameterJdbcTemplate.update(sql, param);
 	}
 
 }
