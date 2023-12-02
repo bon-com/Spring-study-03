@@ -4,6 +4,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.*;
 
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import com.example.myapp.form.type7.Type7Form;
+import com.example.myapp.utils.PropertyUtils;
 import com.example.myapp.web.type7.controller.UserSearchForm.PointGruop;
 import com.example.myapp.web.type7.controller.UserSearchForm.StudentGroup;
 
@@ -22,6 +24,9 @@ import com.example.myapp.web.type7.controller.UserSearchForm.StudentGroup;
 @RequestMapping("type7")
 @SessionAttributes("type7Form")
 public class Type7Controller {
+	@Autowired
+	private PropertyUtils propertyUtils;
+	
 	@RequestMapping(value = "menu", method = GET)
 	public String createSession(Model model) {
 		model.addAttribute("type7Form", new Type7Form());
@@ -64,7 +69,7 @@ public class Type7Controller {
 	@RequestMapping(value="proceed_menu", method=RequestMethod.POST, params="send")
 	public String send(@Valid @ModelAttribute("type7Form") Type7Form form, BindingResult rs, Model model) {
 		if (form.isNullField() || rs.hasErrors()) {
-			model.addAttribute("errorMsg", "未入力項目があります。");
+			model.addAttribute("errorMsg", propertyUtils.getMessage("error.minyuryoku"));
 			return "type7/menu";
 		}
 		return "redirect:proceed_menu?confirm";
