@@ -6,7 +6,6 @@
 <title>生徒情報</title>
 </head>
 <body>
-	<%@ include file="/WEB-INF/commons/header_common.jsp"%>
 	<div class="container mt-5">
 		<h2 class="text-center">生徒情報</h2>
 		<form:form modelAttribute="type7Form" class="mt-4">
@@ -41,10 +40,10 @@
 					</tr>
 				</table>
 			</div>
-			<div class="form-group text-center">
+			<div class="form-group text-center mt-4">
 				<!-- 戻るボタン -->
-				<a href="${contextPath}type7/proceed_menu" class="btn btn-danger mr-4 px-5">戻る</a>
-				<button type="submit" name="info_student" class="btn btn-primary px-5">次へ</button>
+				<a href="<c:url value="/type7/proceed_menu"/>" class="btn btn-danger mr-4 px-5">戻る</a>
+				<button type="submit" name="send" class="btn btn-primary px-5">次へ</button>
 			</div>
 		</form:form>
 	</div>

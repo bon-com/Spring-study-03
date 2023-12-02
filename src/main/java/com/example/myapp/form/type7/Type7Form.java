@@ -2,9 +2,6 @@ package com.example.myapp.form.type7;
 
 import javax.validation.Valid;
 
-import com.example.myapp.form.type6.PointForm;
-import com.example.myapp.form.type6.UserForm;
-
 import lombok.Data;
 
 @Data
@@ -15,4 +12,21 @@ public class Type7Form {
 	/** テスト結果 */
 	@Valid
 	private PointForm result;
+	
+	public boolean isNullField() {
+		if (student == null) {
+			return true;
+		} 
+		if (result == null) {
+			return true;
+		}
+		if (student.isNullField()) {
+			return true;
+		}
+		if (result.isNullField() ) {
+			return true;
+		}
+		// すべてのフィールドが入力済み
+		return false;
+	}
 }

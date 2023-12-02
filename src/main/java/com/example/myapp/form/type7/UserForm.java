@@ -17,4 +17,8 @@ public class UserForm {
 	/** 学級 */
 	@NotNull(groups = StudentGroup.class)
 	private String gradeClass;
+	
+	public boolean isNullField() {
+		return name == null || grade == null || gradeClass == null;
+	}
 }

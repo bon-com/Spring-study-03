@@ -14,4 +14,8 @@ public class PointForm {
 	/** 算数 */
 	@NotNull(groups = PointGruop.class)
 	private Integer arithmetic;
+	
+	public boolean isNullField() {
+		return japaneseLang == null || arithmetic == null;
+	}
 }
