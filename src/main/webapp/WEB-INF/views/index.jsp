@@ -14,7 +14,7 @@
 		<li><a href="<c:url value="/type2/create?form" />">画面遷移タイプ２</a></li>
 		<li><a href="<c:url value="/type3/home" />">画面遷移タイプ３（顧客情報操作）</a></li>
 		<li><a href="<c:url value="/type4/fileupload/form" />">画面遷移タイプ４（PDFファイルアップロード）</a></li>
-		<li><a href="<c:url value="/type5/input" />">画面遷移タイプ５（さまざまなフォームバインド）</a></li>
+		<li><a href="<c:url value="/type5/create_session" />">画面遷移タイプ５（さまざまなフォームバインド）</a></li>
 		<li><a href="<c:url value="/type6/input" />">画面遷移タイプ６（さまざまなフォームバインド）</a></li>
 		<li><a href="<c:url value="/type7/menu" />">画面遷移タイプ７（さまざまなフォームバインド）</a></li>
 		<li><a href="<c:url value="/type8/menu" />">画面遷移タイプ８（サーブレットコンテナエラーハンドリング）</a></li>

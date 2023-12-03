@@ -19,9 +19,14 @@ import com.example.myapp.form.type5.Type5Form;
 @RequestMapping("type5")
 @SessionAttributes("type5Form")
 public class Type5Controller {
-	@RequestMapping(value = "input", method = GET)
-	public String showInput(Model model) {
+	@RequestMapping(value = "create_session", method = GET)
+	public String createSession(Model model) {
 		model.addAttribute("type5Form", new Type5Form());
+		return "redirect:input";
+	}
+	
+	@RequestMapping(value="input")
+	public String showInput() {
 		return "type5/input";
 	}
 	
