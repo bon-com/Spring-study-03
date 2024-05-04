@@ -1,11 +1,15 @@
 package com.example.myapp.form.type7;
 
 import javax.validation.Valid;
+import javax.validation.groups.Default;
 
 import lombok.Data;
 
 @Data
 public class Type7Form {
+	public interface StudentGroup extends Default {}
+	public interface PointGruop extends Default {}
+	
 	/** 生徒情報 */
 	@Valid
 	private UserForm student;

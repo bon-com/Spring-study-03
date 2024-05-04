@@ -3,7 +3,7 @@ package com.example.myapp.web.type9.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.example.myapp.dto.type9.UserDTO;
+import com.example.myapp.biz.type9.dto.UserDTO;
 import com.example.myapp.web.common.CommonHelper;
 
 

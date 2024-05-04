@@ -2,7 +2,7 @@ package com.example.myapp.biz.type9.service;
 
 import java.util.List;
 
-import com.example.myapp.dto.type9.UserDTO;
+import com.example.myapp.biz.type9.dto.UserDTO;
 import com.example.myapp.form.type9.UserForm;
 
 public interface UserService {

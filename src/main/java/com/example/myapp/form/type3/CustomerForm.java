@@ -2,10 +2,10 @@ package com.example.myapp.form.type3;
 
 import java.util.Date;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 
-import org.hibernate.validator.constraints.Email;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.Data;

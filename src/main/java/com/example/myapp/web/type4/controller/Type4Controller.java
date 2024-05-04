@@ -9,6 +9,7 @@ import java.io.IOException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -36,7 +37,7 @@ public class Type4Controller {
 	 * @param form
 	 * @return
 	 */
-	@RequestMapping(value = "form", method = POST)
+	@PostMapping(value = "form")
 	public String uploadFile(@ModelAttribute("uploadForm") FileUploadForm form) {
 		MultipartFile pdfFile = form.getPdfFile();
 		// ファイル名

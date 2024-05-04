@@ -8,9 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.myapp.biz.type9.domain.User;
+import com.example.myapp.biz.type9.dto.UserDTO;
 import com.example.myapp.biz.type9.repository.JdbcUserDao;
 import com.example.myapp.common.Constant;
-import com.example.myapp.dto.type9.UserDTO;
 import com.example.myapp.errors.MyAppDataAccessException;
 import com.example.myapp.form.type9.UserForm;
 

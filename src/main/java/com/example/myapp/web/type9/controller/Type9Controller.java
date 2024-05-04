@@ -10,8 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.myapp.biz.type9.dto.UserDTO;
 import com.example.myapp.biz.type9.service.UserService;
-import com.example.myapp.dto.type9.UserDTO;
 
 @Controller
 @RequestMapping("type9")

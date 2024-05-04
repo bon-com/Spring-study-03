@@ -1,4 +1,4 @@
-package com.example.myapp.dto.type9;
+package com.example.myapp.biz.type9.dto;
 
 import java.util.Date;
 

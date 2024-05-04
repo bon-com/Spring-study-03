@@ -16,9 +16,9 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import com.example.myapp.form.type7.Type7Form;
+import com.example.myapp.form.type7.Type7Form.PointGruop;
+import com.example.myapp.form.type7.Type7Form.StudentGroup;
 import com.example.myapp.utils.PropertyUtils;
-import com.example.myapp.web.type7.controller.UserSearchForm.PointGruop;
-import com.example.myapp.web.type7.controller.UserSearchForm.StudentGroup;
 
 @Controller
 @RequestMapping("type7")

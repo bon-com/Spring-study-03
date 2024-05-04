@@ -2,7 +2,7 @@ package com.example.myapp.form.type8;
 
 import javax.validation.constraints.NotNull;
 
-import com.example.myapp.web.type7.controller.UserSearchForm.StudentGroup;
+import com.example.myapp.form.type7.Type7Form.StudentGroup;
 
 import lombok.Data;
 

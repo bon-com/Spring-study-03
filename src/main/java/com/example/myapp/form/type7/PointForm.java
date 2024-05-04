@@ -2,7 +2,7 @@ package com.example.myapp.form.type7;
 
 import javax.validation.constraints.NotNull;
 
-import com.example.myapp.web.type7.controller.UserSearchForm.PointGruop;
+import com.example.myapp.form.type7.Type7Form.PointGruop;
 
 import lombok.Data;
 
